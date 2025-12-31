@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Jessica</title>
+
+<style>
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: "Georgia", serif;
+    background: linear-gradient(135deg, #f3d6c6, #e6bfae);
+    color: #2a1f1b;
+}
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.overlay button {
+    background: white;
+    border: none;
+    padding: 18px 36px;
+    border-radius: 30px;
+    font-size: 18px;
+    font-family: Georgia, serif;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 30px;
+}
+
+.card {
+    background: rgba(255,255,255,0.96);
+    padding: 50px;
+    max-width: 820px;
+    border-radius: 25px;
+    line-height: 2;
+    box-shadow: 0 25px 55px rgba(0,0,0,0.2);
+}
+
+h1 {
+    text-align: center;
+    font-weight: normal;
+    margin-bottom: 35px;
+}
+
+.poema {
+    font-style: italic;
+    margin-bottom: 35px;
+}
+
+.assinatura {
+    text-align: right;
+    margin-top: 40px;
+    font-style: italic;
+}
+
+/* Corações */
+.heart {
+    position: fixed;
+    top: -10%;
+    color: rgba(255, 70, 110, 0.75);
+    animation: cair linear forwards;
+    pointer-events: none;
+}
+
+@keyframes cair {
+    from { transform: translateY(-10vh); opacity: 1; }
+    to   { transform: translateY(110vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- MÚSICA (MP3 LOCAL) -->
+<audio id="musica" preload="auto" loop playsinline>
+    <source src="te-vivo.mp3" type="audio/mpeg">
+    Seu navegador não suporta áudio.
+</audio>
+
+<!-- TELA DE INÍCIO -->
+<div class="overlay" id="overlay">
+    <button onclick="iniciar()">Toque aqui 💗</button>
+</div>
+
+<div class="container">
+<div class="card">
+    <h1>Para Jessica Baldo</h1>
+
+    <div class="poema">
+        <p>
+            Eu te vivo nos detalhes do dia,<br>
+            no silêncio que chama seu nome,<br>
+            no pensamento que insiste em ficar.
+        </p>
+        <p>
+            Te vivo sem pedir licença,<br>
+            porque amar você virou parte<br>
+            do jeito que eu respiro e sigo.
+        </p>
+    </div>
+
+    <p>
+        Que 2026 venha com mais momentos juntos,<br>
+        mais histórias para contar,<br>
+        mais amor para dividir.
+    </p>
+
+    <p>
+        Eu te vivo.<br>
+        Eu te sinto.<br>
+        Eu te amo.
+    </p>
+
+    <div class="assinatura">
+        Feliz 2026,<br>
+        com amor,<br>
+        Murilo Florencio
+    </div>
+</div>
+</div>
+
+<script>
+function iniciar() {
+    const audio = document.getElementById("musica");
+    audio.volume = 0.8;
+    audio.play();
+    document.getElementById("overlay").style.display = "none";
+}
+
+function criarCoracao() {
+    const h = document.createElement("div");
+    h.className = "heart";
+    h.innerHTML = "❤";
+    h.style.left = Math.random() * 100 + "vw";
+    h.style.fontSize = (Math.random() * 18 + 14) + "px";
+    h.style.animationDuration = (Math.random() * 3 + 4) + "s";
+    document.body.appendChild(h);
+    setTimeout(() => h.remove(), 7000);
+}
+
+setInterval(criarCoracao, 300);
+</script>
+
+</body>
+</html>
